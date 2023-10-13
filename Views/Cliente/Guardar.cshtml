@@ -1,0 +1,37 @@
+﻿@model ClienteModel
+@{
+    ViewData["Title"] = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Alta de Cliente</h1>
+<div class="card">
+    <form method="post" asp-action="Guardar" asp-controller="Cliente">
+        <div class="form-group">
+            <label for="txtIdCliente">IdCliente:</label>
+            <input asp-for="IdCliente" type="text" id="txtIdCliente" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="txtNombre">Nombre:</label>
+            <input asp-for="Nombre"  type="text" id="txtNombre"  class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="txtApPaterno">Apellido Paterno:</label>
+            <input asp-for="ApPaterno" type="text" id="txtApPaterno" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="txtApMaterno">Apellido Materno:</label>
+            <input asp-for="ApMaterno" type="text" id="txtApMaterno" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="txtEdad">Edad:</label>
+            <input asp-for="Edad" type="number" id="txtEdad"  class="form-control" max="2" />
+        </div>
+        <div class="form-group">
+            <label for="txtRfc">Rfc:</label>
+            <input asp-for="Rfc" type="text" id="txtRfc"  class="form-control" />
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </form>
+</div>

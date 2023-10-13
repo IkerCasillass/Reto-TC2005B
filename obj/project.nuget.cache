@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "nzAn0iiAXQX0xpzWjfZ6/I2dltN751654bdumYZqkGx5+f0cvaaDFf4xnUOm1z8ZVRuByrm8VTdLL9v1HjrlbQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ikerc\\source\\repos\\WebReto\\WebReto.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ikerc\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\ikerc\\.nuget\\packages\\npgsql\\7.0.4\\npgsql.7.0.4.nupkg.sha512",
+    "C:\\Users\\ikerc\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

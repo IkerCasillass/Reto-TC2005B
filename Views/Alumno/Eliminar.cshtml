@@ -1,0 +1,18 @@
+﻿@model AlumnoModel
+@{
+    ViewData["Title"] = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Eliminar Alumno</h4>
+<div class="card-body">
+    <form asp-action="Eliminar" asp-controller="Alumno" method="post">
+        <div class="form-group">
+            <label for="txtIdAlumno">ID:</label>
+            <input asp-for="IdAlumno" type="text" class="form-control" id="txtIdAlumno">
+        </div>
+        <div class="alert alert-danger" role="alert">¿Desea dar de baja al alumno?: @Html.DisplayTextFor(m => m.IdAlumno)</div>
+        <button type="submit" class="btn btn-primary btn-danger">Eliminar</button>
+        <a>Volver a la lista</a>
+    </form>
+</div>

@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<h2>Listado de Clientes</h2>
+<h4>Catalogo para Administrar Clientes</h4>
+<div class="container">    
+    <a asp-action="Guardar" asp-controller="Cliente" class="btn btn-sm btn-primary"><i class="bi bi-file-earmark-plus"> Crear Nuevo Cliente  </i></a>
+    <div class="table">
+        <table>
+            <thead>
+                <tr class="table-light">
+                    <th>IdCliente</th>
+                    <th>Nombre</th>
+                    <th>Ap Paterno</th>
+                    <th>Ap Materno</th>
+                    <th>Edad</th>
+                    <th>RFC</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td> @item.IdCliente </td>
+                        <td> @item.Nombre </td>
+                        <td> @item.ApPaterno </td>
+                        <td> @item.ApMaterno </td>
+                        <td> @item.Edad </td>
+                        <td> @item.Rfc </td>
+                        <td><a asp-action="Editar" asp-controller="Cliente" class="btn btn-sm btn-warning " asp-route-idCliente="@item.IdCliente"> <i class="bi bi-pencil-square"></i> Actualizar</a></td>
+                        <td><a asp-action="Eliminar" asp-controller="Cliente" class="btn btn-sm btn-danger" asp-route-idCliente="@item.IdCliente"> <i class="bi bi-cloud-minus"> </i> Eliminar </a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

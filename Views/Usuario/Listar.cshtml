@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<div class="card-header"><h4>Consulta de Alumnos</h4></div>
+<div class="card-body">
+    <hr />
+    <table class="table">
+        <thead>
+            <tr class="table-light">
+                <th>Username</th>
+                <th>Nombre</th>
+                @* <th>Check</th> *@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> @item.alumno </td>
+                    <td> @item.nombre </td>                   
+                    <td><button class="btn btn-success"></button><i class="bi bi-dash-circle"></i></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
