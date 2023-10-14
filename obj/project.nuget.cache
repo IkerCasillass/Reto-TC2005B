@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nzAn0iiAXQX0xpzWjfZ6/I2dltN751654bdumYZqkGx5+f0cvaaDFf4xnUOm1z8ZVRuByrm8VTdLL9v1HjrlbQ==",
+  "dgSpecHash": "90H57gDg0vI7ydmyvZ7W3Svf7XGYp8GKSMIEiAeDbB0M/1Mfm+IEzQtIEBgqVrwOJrQtvsRwb0AM1UbEngcq4A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ikerc\\source\\repos\\WebReto\\WebReto.csproj",
+  "projectFilePath": "C:\\Users\\ikerc\\OneDrive\\Escritorio\\Retoweb\\Reto-TC2005B\\WebReto.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ikerc\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\ikerc\\.nuget\\packages\\npgsql\\7.0.4\\npgsql.7.0.4.nupkg.sha512",
