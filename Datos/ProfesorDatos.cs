@@ -9,17 +9,17 @@ using Microsoft.Win32;
 
 namespace WebLogin.Datos
 {
-    public class AlumnoDatos
+    public class ProfesorDatos
     {
 
-        //public int Validar(int IdAlumno, string passwd)
+        //public int Validar(int IdProfesor, string passwd)
         //{
-        //    //AlumnoDatos oAlumno = new AlumnoDatos();
+        //    //ProfesorDatos oProfesor = new ProfesorDatos();
         //    int validado = 0;
         //    var con = new Conexion();
         //    try
         //    {
-        //        NpgsqlCommand cmd = new NpgsqlCommand("SELECT estatus FROM alumnos WHERE idAlumno = " + IdAlumno + " AND passwd='" + passwd + "';", con.AbrirConexion());
+        //        NpgsqlCommand cmd = new NpgsqlCommand("SELECT estatus FROM Profesores WHERE idProfesor = " + IdProfesor + " AND passwd='" + passwd + "';", con.AbrirConexion());
         //        cmd.CommandType = CommandType.Text;
 
         //        using (var dr = cmd.ExecuteReader())
@@ -38,13 +38,13 @@ namespace WebLogin.Datos
         //}
 
 
-        public List<AlumnoModel> Consultar()
+        public List<ProfesorModel> Consultar()
         {
-            var oListaAlumnos = new List<AlumnoModel>();
+            var oListaProfesores = new List<ProfesorModel>();
             var con = new Conexion();
             NpgsqlConnection conn = con.AbrirConexion();
 
-            string sql = "SELECT * FROM alumnos ORDER BY id;";
+            string sql = "SELECT * FROM Profesores ORDER BY id;";
             NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
 
@@ -54,14 +54,15 @@ namespace WebLogin.Datos
                 {
                     while (dr.Read())
                     {
-                        oListaAlumnos.Add(new AlumnoModel()
+                        oListaProfesores.Add(new ProfesorModel()
                         {
-                            IdAlumno = Convert.ToInt32(dr["id"]),
+                            IdProfesor = Convert.ToInt32(dr["id"]),
                             Nombre = dr["nombre"].ToString(),
                             ApPaterno = dr["apellido_pat"].ToString(),
                             ApMaterno = dr["apellido_mat"].ToString(),
                             Edad = Convert.ToInt32(dr["edad"]),
-                            Grado = Convert.ToInt32(dr["grado"])
+                            Telefono = Convert.ToString(dr["telefono"]),
+                            Email = Convert.ToString(dr["email"])
                         });
                     }
                 }
@@ -77,15 +78,15 @@ namespace WebLogin.Datos
                 con.CerrarConexion(); // Asegurar que la conexión se cierre
             }
 
-            return oListaAlumnos;
+            return oListaProfesores;
         }
 
 
-        public bool Guardar(AlumnoModel oAlumno)
+        public bool Guardar(ProfesorModel oProfesor)
         {
             bool flag;
             var con = new Conexion();
-            string sql = "CALL sp_alumnos_insert (" /*+ oAlumno.IdAlumno*/ + "'" + oAlumno.Nombre + "','" + oAlumno.ApPaterno + "','" + oAlumno.ApMaterno + "'," + oAlumno.Edad + ",'"  + oAlumno.Grado + "')";
+            string sql = "CALL sp_Profesores_insert (" /*+ oProfesor.IdProfesor*/ + "'" + oProfesor.Nombre + "','" + oProfesor.ApPaterno + "','" + oProfesor.ApMaterno + "'," + oProfesor.Edad + ",'" + oProfesor.Telefono + "','" + oProfesor.Email + "')";
             NpgsqlCommand cmd = new NpgsqlCommand(sql, con.AbrirConexion());
             cmd.ExecuteNonQuery();
             flag = true;
@@ -93,11 +94,11 @@ namespace WebLogin.Datos
             return flag;
         }
 
-        public bool Actualizar(AlumnoModel oAlumno)
+        public bool Actualizar(ProfesorModel oProfesor)
         {
             bool flag;
             var con = new Conexion();
-            string sql = "CALL sp_alumnos_update (" + oAlumno.IdAlumno + ",'" + oAlumno.Nombre + "','" + oAlumno.ApPaterno + "','"  + oAlumno.ApMaterno + "'," + oAlumno.Edad + "," + oAlumno.Grado + ")";
+            string sql = "CALL sp_Profesores_update (" + oProfesor.IdProfesor + ",'" + oProfesor.Nombre + "','" + oProfesor.ApPaterno + "','" + oProfesor.ApMaterno + "'," + oProfesor.Edad + ",'" + oProfesor.Telefono + "','" + oProfesor.Email + "')";
             NpgsqlCommand cmd = new NpgsqlCommand(sql, con.AbrirConexion());
             cmd.ExecuteNonQuery();
             flag = true;
@@ -105,11 +106,11 @@ namespace WebLogin.Datos
             return flag;
         }
 
-        public bool Eliminar(int IdAlumno)
+        public bool Eliminar(int IdProfesor)
         {
             bool flag;
             var con = new Conexion();
-            string sql = "CALL sp_alumnos_delete (" + IdAlumno + ")";
+            string sql = "CALL sp_Profesores_delete (" + IdProfesor + ")";
             NpgsqlCommand cmd = new NpgsqlCommand(sql, con.AbrirConexion());
             cmd.ExecuteNonQuery();
             flag = true;
@@ -117,29 +118,30 @@ namespace WebLogin.Datos
             return flag;
         }
 
-        public AlumnoModel Obtener(int idAlumno)
+        public ProfesorModel Obtener(int idProfesor)
         {
-            var oAlumno = new AlumnoModel();
+            var oProfesor = new ProfesorModel();
             var con = new Conexion();
 
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM alumnos WHERE id='" + idAlumno + "';", con.AbrirConexion());
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM Profesores WHERE id='" + idProfesor + "';", con.AbrirConexion());
             cmd.CommandType = CommandType.Text;
 
             using (var dr = cmd.ExecuteReader())
             {
                 while (dr.Read())
                 {
-                    oAlumno.IdAlumno = Convert.ToInt32(dr["id"]);
-                    oAlumno.Nombre = dr["nombre"].ToString();
-                    oAlumno.ApPaterno = dr["apellido_pat"].ToString();
-                    oAlumno.ApMaterno = dr["apellido_mat"].ToString();
-                    oAlumno.Edad = Convert.ToInt32(dr["edad"]);
-                    oAlumno.Grado = Convert.ToInt32(dr["grado"]);
+                    oProfesor.IdProfesor = Convert.ToInt32(dr["id"]);
+                    oProfesor.Nombre = dr["nombre"].ToString();
+                    oProfesor.ApPaterno = dr["apellido_pat"].ToString();
+                    oProfesor.ApMaterno = dr["apellido_mat"].ToString();
+                    oProfesor.Edad = Convert.ToInt32(dr["edad"]);
+                    oProfesor.Telefono = Convert.ToString(dr["telefono"]);
+                    oProfesor.Email = Convert.ToString(dr["email"]);
 
 
                 }
             }
-            return oAlumno;
+            return oProfesor;
         }
 
 

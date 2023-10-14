@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<h2 class="maintitle">Listado de Profesores</h2>
+@* <h4 class="maintitle">Catalogo para Administrar Profesors</h4> *@
+<div class="container">
+    <a asp-action="Guardar" asp-controller="Profesor" class="btn btn-sm btn-primary"><i class="bi bi-file-earmark-plus"> Crear Nuevo Profesor  </i></a>
+    <div class="table">
+        <table class="bg-secondor">
+            <thead>
+                <tr class="bg-second">
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Edad</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th colspan="2" style="text-align: center;" >Acciones</th> 
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td> @item.IdProfesor </td>
+                        <td> @item.Nombre </td>
+                        <td> @item.ApPaterno </td>
+                        <td> @item.ApMaterno </td>
+                        <td> @item.Edad </td>
+                        <td> @item.Telefono </td>
+                        <td> @item.Email </td>
+                        <td><a asp-action="Editar" asp-controller="Profesor" class="btn btn-sm btn-warning " asp-route-idProfesor="@item.IdProfesor"> <i class="bi bi-pencil-square"></i> Actualizar</a></td>
+                        <td><a asp-action="Eliminar" asp-controller="Profesor" class="btn btn-sm btn-danger" asp-route-idProfesor="@item.IdProfesor"> <i class="bi bi-cloud-minus"> </i> Eliminar </a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
