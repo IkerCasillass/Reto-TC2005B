@@ -29,6 +29,7 @@ namespace WebLogin.Controllers
         }
 
         [HttpPost]
+
         public IActionResult Guardar(AlumnoModel alumno)
         {
             if (!ModelState.IsValid)
@@ -53,11 +54,11 @@ namespace WebLogin.Controllers
             //return RedirectToAction("Listar", "Alumno");
         }
 
-        //public IActionResult Editar(int id)
-        //{
-        //    var alumno = cAlumnos.ObtenerPorId(id); // Reemplaza con tu lógica para obtener un alumno por su ID
-        //    return View(alumno);
-        //}
+        public IActionResult Editar(int idAlumno)
+        {
+            var alumno = cAlumnos.Obtener(idAlumno);
+            return View(alumno);
+        }
 
         [HttpPost]
         public IActionResult Editar(AlumnoModel alumno)
@@ -72,30 +73,26 @@ namespace WebLogin.Controllers
             return RedirectToAction("Listar");
         }
 
-        public IActionResult Eliminar(int id)
+        public IActionResult Eliminar(int idAlumno)
         {
-            // Realiza la eliminación del alumno
-            var respuesta = cAlumnos.Eliminar(id);
+            var oAlumno = cAlumnos.Obtener(idAlumno);
+            return View(oAlumno);
+        }
+
+        [HttpPost]
+        public IActionResult Eliminar(AlumnoModel oAlumno)
+        {
+            //if (!ModelState.IsValid)
+            //    return View();
+
+            var respuesta = cAlumnos.Eliminar(oAlumno.IdAlumno);
 
             if (respuesta)
             {
-                // La eliminación fue exitosa, redirige a la vista con un objeto AlumnoModel
-                var oAlumno = cAlumnos.Obtener(id); // Puedes cargar los datos del alumno eliminado si lo necesitas
-                return View(oAlumno);
+                return RedirectToAction("Listar");
             }
             else
-            {
-                // La eliminación falló, redirige a una vista de error
-                return RedirectToAction("Error");
-            }
+                return View();
         }
-
-        //[HttpPost]
-        //public IActionResult Eliminar(int id)
-        //{
-        //    cAlumnos.Eliminar(id); // Reemplaza con tu lógica para eliminar un alumno
-
-        //    return RedirectToAction("Listar");
-        //}
     }
 }

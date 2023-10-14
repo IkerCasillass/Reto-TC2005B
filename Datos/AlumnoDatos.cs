@@ -61,7 +61,7 @@ namespace WebLogin.Datos
                             ApPaterno = dr["apellido_pat"].ToString(),
                             ApMaterno = dr["apellido_mat"].ToString(),
                             Edad = Convert.ToInt32(dr["edad"]),
-                            Grado = dr["grado"].ToString()
+                            Grado = Convert.ToInt32(dr["grado"])
                         });
                     }
                 }
@@ -85,7 +85,7 @@ namespace WebLogin.Datos
         {
             bool flag;
             var con = new Conexion();
-            string sql = "CALL sp_alumnos_insert (" + oAlumno.IdAlumno + ",'" + oAlumno.Nombre + "','" + oAlumno.ApPaterno + "','" + oAlumno.ApMaterno + "'," + oAlumno.Edad + ",'"  + oAlumno.Grado + "')";
+            string sql = "CALL sp_alumnos_insert (" /*+ oAlumno.IdAlumno*/ + "'" + oAlumno.Nombre + "','" + oAlumno.ApPaterno + "','" + oAlumno.ApMaterno + "'," + oAlumno.Edad + ",'"  + oAlumno.Grado + "')";
             NpgsqlCommand cmd = new NpgsqlCommand(sql, con.AbrirConexion());
             cmd.ExecuteNonQuery();
             flag = true;
@@ -97,7 +97,7 @@ namespace WebLogin.Datos
         {
             bool flag;
             var con = new Conexion();
-            string sql = "CALL sp_alumnos_update (" + oAlumno.IdAlumno + ",'" + oAlumno.Nombre + "','" + oAlumno.ApPaterno + "','"  + oAlumno.ApMaterno + "','" + oAlumno.Edad + ",'" + oAlumno.Grado + "')";
+            string sql = "CALL sp_alumnos_update (" + oAlumno.IdAlumno + ",'" + oAlumno.Nombre + "','" + oAlumno.ApPaterno + "','"  + oAlumno.ApMaterno + "'," + oAlumno.Edad + "," + oAlumno.Grado + ")";
             NpgsqlCommand cmd = new NpgsqlCommand(sql, con.AbrirConexion());
             cmd.ExecuteNonQuery();
             flag = true;
@@ -134,8 +134,9 @@ namespace WebLogin.Datos
                     oAlumno.ApPaterno = dr["apellido_pat"].ToString();
                     oAlumno.ApMaterno = dr["apellido_mat"].ToString();
                     oAlumno.Edad = Convert.ToInt32(dr["edad"]);
-                    oAlumno.Grado = dr["grado"].ToString();
-             
+                    oAlumno.Grado = Convert.ToInt32(dr["grado"]);
+
+
                 }
             }
             return oAlumno;

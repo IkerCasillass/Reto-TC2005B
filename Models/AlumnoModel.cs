@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,8 +16,9 @@ namespace WebLogin.Models
 
         public string ApMaterno { get; set; }
 
-        public string Grado { get; set; }
+        public int Grado { get; set; }
 
+        [ValidateNever]
         public string Grupo { get; set; }
 
         public int Edad { get; set; }
