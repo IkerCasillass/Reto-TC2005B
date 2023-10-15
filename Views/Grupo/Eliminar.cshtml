@@ -1,0 +1,18 @@
+﻿@model GrupoModel
+@{
+    ViewData["Title"] = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Eliminar Grupo</h4>
+<div class="card-body">
+    <form asp-action="Eliminar" asp-controller="Grupo" method="post">
+        <div class="form-group">
+            <label for="txtNombre">ID:</label>
+            <input asp-for="Nombre" type="text" class="form-control" id="txtNombre">
+        </div>
+        <div class="alert alert-danger" role="alert">¿Desea dar de baja al Grupo?: @Html.DisplayTextFor(m => m.Nombre)</div>
+        <button type="submit" class="btn btn-primary btn-danger">Eliminar</button>
+        <a>Volver a la lista</a>
+    </form>
+</div>

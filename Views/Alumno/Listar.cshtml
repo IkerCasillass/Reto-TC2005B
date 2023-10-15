@@ -18,6 +18,7 @@
                     <th>Apellido Materno</th>
                     <th>Edad</th>
                     <th>Grado</th>
+                    <th>Grupo</th>
                     <th colspan="2" style="text-align: center;" >Acciones</th> 
                 </tr>
             </thead>
@@ -31,6 +32,7 @@
                         <td> @item.ApMaterno </td>
                         <td> @item.Edad </td>
                         <td> @item.Grado </td>
+                        <td> @item.Grupo </td>
                         <td><a asp-action="Editar" asp-controller="Alumno" class="btn btn-sm btn-warning " asp-route-idAlumno="@item.IdAlumno"> <i class="bi bi-pencil-square"></i> Actualizar</a></td>
                         <td><a asp-action="Eliminar" asp-controller="Alumno" class="btn btn-sm btn-danger" asp-route-idAlumno="@item.IdAlumno"> <i class="bi bi-cloud-minus"> </i> Eliminar </a></td>
                     </tr>
