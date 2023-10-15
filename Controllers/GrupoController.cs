@@ -73,9 +73,9 @@ namespace WebLogin.Controllers
         //    return RedirectToAction("Listar");
         //}
 
-        public IActionResult Eliminar(string nombre_grupo)
+        public IActionResult Eliminar(string Nombre)
         {
-            var oGrupo = cGrupos.Obtener(nombre_grupo);
+            var oGrupo = cGrupos.Obtener(Nombre);
             return View(oGrupo);
         }
 
@@ -85,14 +85,34 @@ namespace WebLogin.Controllers
             //if (!ModelState.IsValid)
             //    return View();
 
-            var respuesta = cGrupos.Eliminar(oGrupo.Nombre);
-
-            if (respuesta)
+            if (oGrupo.NumEstudiantes == 0)
             {
-                return RedirectToAction("Listar");
+                var respuesta = cGrupos.Eliminar(oGrupo.Nombre);
+
+                if (respuesta)
+                {
+                    return RedirectToAction("Listar");
+                }
+                else
+                    return View();
             }
             else
+            {
+                TempData["Mensaje"] = "No se puede eliminar el grupo. Tiene estudiantes inscritos.";
                 return View();
+            }
+
+        }
+
+        public IActionResult Ver(string Nombre)
+        {
+            // Recupera la lista de alumnos del grupo seleccionado, puedes utilizar tu lógica para obtener estos datos.
+            List<AlumnoModel> alumnos = cGrupos.ObtenerAlumnosPorGrupo(Nombre);
+
+            ViewData["Nombre"] = Nombre;
+
+            // Puedes pasar los alumnos a una vista para mostrarlos.
+            return View(alumnos);
         }
     }
 }

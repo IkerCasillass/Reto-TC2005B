@@ -14,5 +14,7 @@ namespace WebLogin.Models
 
         public int NumEstudiantes { get; set; }
 
+        public List<AlumnoModel> Estudiantes { get; set; }
+
     }
 }

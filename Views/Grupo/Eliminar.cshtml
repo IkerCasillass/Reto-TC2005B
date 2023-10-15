@@ -6,13 +6,21 @@
 
 <h4>Eliminar Grupo</h4>
 <div class="card-body">
+    @if (!string.IsNullOrEmpty(TempData["Mensaje"] as string))
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["Mensaje"]
+        </div>
+    }
     <form asp-action="Eliminar" asp-controller="Grupo" method="post">
         <div class="form-group">
-            <label for="txtNombre">ID:</label>
+            <label for="txtNombre">Nombre:</label>
             <input asp-for="Nombre" type="text" class="form-control" id="txtNombre">
         </div>
+        <input asp-for="NumEstudiantes" type="hidden" />
+        <input asp-for="Grado" type="hidden" />
         <div class="alert alert-danger" role="alert">¿Desea dar de baja al Grupo?: @Html.DisplayTextFor(m => m.Nombre)</div>
         <button type="submit" class="btn btn-primary btn-danger">Eliminar</button>
-        <a>Volver a la lista</a>
+        <a asp-action="Listar" class="btn btn-primary">Volver</a>
     </form>
 </div>
