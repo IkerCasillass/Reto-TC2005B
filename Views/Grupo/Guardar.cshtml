@@ -1,0 +1,22 @@
+﻿@model GrupoModel
+@{
+    ViewData["Title"] = "Guardar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Alta de Grupo</h1>
+<div class="card">
+    <form method="post" asp-action="Guardar" asp-controller="Grupo">
+        <div class="form-group">
+            <label for="txtNombre">Nombre:</label>
+            <input asp-for="Nombre"  type="text" id="txtNombre"  class="form-control" />
+            @* <span asp-validation-for="Nombre" class="text-danger"></span> *@
+        </div>
+        <div class="form-group">
+            <label for="txtGrado">Grado:</label>
+            <input asp-for="Grado" type="text" id="txtGrado"  class="form-control" />
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </form>
+</div>

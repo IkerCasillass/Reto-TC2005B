@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Win32;
+using System.Text.RegularExpressions;
 
 namespace WebLogin.Datos
 {
@@ -61,7 +62,8 @@ namespace WebLogin.Datos
                             ApPaterno = dr["apellido_pat"].ToString(),
                             ApMaterno = dr["apellido_mat"].ToString(),
                             Edad = Convert.ToInt32(dr["edad"]),
-                            Grado = Convert.ToInt32(dr["grado"])
+                            Grado = Convert.ToInt32(dr["grado"]),
+                            Grupo = dr["grupo"].ToString()
                         });
                     }
                 }
@@ -85,7 +87,7 @@ namespace WebLogin.Datos
         {
             bool flag;
             var con = new Conexion();
-            string sql = "CALL sp_alumnos_insert (" /*+ oAlumno.IdAlumno*/ + "'" + oAlumno.Nombre + "','" + oAlumno.ApPaterno + "','" + oAlumno.ApMaterno + "'," + oAlumno.Edad + ",'"  + oAlumno.Grado + "')";
+            string sql = "CALL sp_alumnos_insert (" /*+ oAlumno.IdAlumno*/ + "'" + oAlumno.Nombre + "','" + oAlumno.ApPaterno + "','" + oAlumno.ApMaterno + "'," + oAlumno.Edad + ","  + oAlumno.Grado + ",'" + oAlumno.Grupo + "')";
             NpgsqlCommand cmd = new NpgsqlCommand(sql, con.AbrirConexion());
             cmd.ExecuteNonQuery();
             flag = true;
@@ -97,7 +99,7 @@ namespace WebLogin.Datos
         {
             bool flag;
             var con = new Conexion();
-            string sql = "CALL sp_alumnos_update (" + oAlumno.IdAlumno + ",'" + oAlumno.Nombre + "','" + oAlumno.ApPaterno + "','"  + oAlumno.ApMaterno + "'," + oAlumno.Edad + "," + oAlumno.Grado + ")";
+            string sql = "CALL sp_alumnos_update (" + oAlumno.IdAlumno + ",'" + oAlumno.Nombre + "','" + oAlumno.ApPaterno + "','"  + oAlumno.ApMaterno + "'," + oAlumno.Edad + "," + oAlumno.Grado + ",'" + oAlumno.Grupo +"')";
             NpgsqlCommand cmd = new NpgsqlCommand(sql, con.AbrirConexion());
             cmd.ExecuteNonQuery();
             flag = true;
@@ -135,6 +137,7 @@ namespace WebLogin.Datos
                     oAlumno.ApMaterno = dr["apellido_mat"].ToString();
                     oAlumno.Edad = Convert.ToInt32(dr["edad"]);
                     oAlumno.Grado = Convert.ToInt32(dr["grado"]);
+                    oAlumno.Grupo = dr["grupo"].ToString();
 
 
                 }
