@@ -104,13 +104,19 @@ namespace WebLogin.Datos
 
         public bool Eliminar(string nombre_grupo)
         {
-            bool flag;
-            var con = new Conexion();
-            string sql = "CALL sp_Grupos_delete (" + nombre_grupo + ")";
-            NpgsqlCommand cmd = new NpgsqlCommand(sql, con.AbrirConexion());
-            cmd.ExecuteNonQuery();
-            flag = true;
-            con.CerrarConexion();
+            bool flag = false;
+            GrupoModel oGrupo = Obtener(nombre_grupo);
+
+            if(oGrupo.NumEstudiantes == 0)
+            {
+                var con = new Conexion();
+                string sql = "CALL sp_Grupos_delete ('" + nombre_grupo + "')";
+                NpgsqlCommand cmd = new NpgsqlCommand(sql, con.AbrirConexion());
+                cmd.ExecuteNonQuery();
+                flag = true;
+                con.CerrarConexion();
+            }
+
             return flag;
         }
 
@@ -135,6 +141,95 @@ namespace WebLogin.Datos
             }
             return oGrupo;
         }
+
+        public List<GrupoModel> ListarAlumnosGrupo()
+        {
+            var oListaGrupos = new List<GrupoModel>();
+            var con = new Conexion();
+            NpgsqlConnection conn = con.AbrirConexion();
+
+            string sql = "SELECT * FROM Grupos ORDER BY nombre_grupo;";
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+            cmd.CommandType = CommandType.Text;
+
+            try
+            {
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        var grupo = new GrupoModel()
+                        {
+                            Nombre = dr["nombre_grupo"].ToString(),
+                            Grado = Convert.ToInt32(dr["grado"]),
+                            NumEstudiantes = Convert.ToInt32(dr["num_estudiantes"])
+                        };
+
+                        // Obtener la lista de estudiantes para este grupo
+                        grupo.Estudiantes = ObtenerAlumnosPorGrupo(grupo.Nombre);
+
+                        oListaGrupos.Add(grupo);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción (por ejemplo, registrarla o lanzarla de nuevo)
+                Console.WriteLine("Error al consultar la base de datos: " + ex.Message);
+                throw ex;
+            }
+            finally
+            {
+                con.CerrarConexion(); // Asegurar que la conexión se cierre
+            }
+
+            return oListaGrupos;
+        }
+
+
+        public List<AlumnoModel> ObtenerAlumnosPorGrupo(string nombre_grupo)
+        {
+            var oListaAlumnos = new List<AlumnoModel>();
+            var con = new Conexion();
+            NpgsqlConnection conn = con.AbrirConexion();
+
+            //NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM alumnos WHERE id IN (SELECT id_alumno FROM grupos_alumnos WHERE grupo = '" + nombre_grupo + "');", con.AbrirConexion());
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM alumnos WHERE grupo='" + nombre_grupo + "';", con.AbrirConexion());
+            cmd.CommandType = CommandType.Text;
+
+            try
+            {
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oListaAlumnos.Add(new AlumnoModel()
+                        {
+                            IdAlumno = Convert.ToInt32(dr["id"]),
+                            Nombre = dr["nombre"].ToString(),
+                            ApPaterno = dr["apellido_pat"].ToString(),
+                            ApMaterno = dr["apellido_mat"].ToString(),
+                            Edad = Convert.ToInt32(dr["edad"]),
+                            Grado = Convert.ToInt32(dr["grado"]),
+                            Grupo = dr["grupo"].ToString()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción (por ejemplo, registrarla o lanzarla de nuevo)
+                Console.WriteLine("Error al consultar la base de datos: " + ex.Message);
+                throw ex;
+            }
+            finally
+            {
+                con.CerrarConexion(); // Asegurar que la conexión se cierre
+            }
+
+            return oListaAlumnos;
+        }
+
 
 
     }

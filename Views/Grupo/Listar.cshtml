@@ -4,7 +4,7 @@
 }
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-<h2 class="">Listado de Grupos</h2>
+<h2 class="maintitle">Listado de Grupos</h2>
 @* <h4 class="maintitle">Catalogo para Administrar Grupos</h4> *@
 <div class="container">
     <a asp-action="Guardar" asp-controller="Grupo" class="btn btn-sm btn-primary"><i class="bi bi-file-earmark-plus"> Crear Nuevo Grupo  </i></a>
@@ -22,11 +22,12 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-
+                        
                         <td> @item.Nombre </td>
                         <td> @item.Grado </td>
                         <td> @item.NumEstudiantes </td>
-                        <td><a asp-action="Eliminar" asp-controller="Grupo" class="btn btn-sm btn-danger" asp-route-idGrupo="@item.Nombre"> <i class="bi bi-cloud-minus"> </i> Eliminar </a></td>
+                        <td><a asp-action="Eliminar" asp-controller="Grupo" class="btn btn-sm btn-danger" asp-route-Nombre="@item.Nombre"> <i class="bi bi-cloud-minus"> </i> Eliminar </a></td>
+                        <td><a asp-action="Ver" asp-controller="Grupo" class="btn btn-sm btn-info" asp-route-Nombre="@item.Nombre"> <i class="bi bi-view-list"> </i> Ver </a></td>
                     </tr>
                 }
             </tbody>

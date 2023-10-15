@@ -60,12 +60,48 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ikerc/OneDrive/Escritorio/Retoweb/Reto-TC2005B/Views/Grupo/Eliminar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3J1cG9cRWxpbWluYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ikerc/OneDrive/Escritorio/Retoweb/Reto-TC2005B/Views/Grupo/Guardar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3J1cG9cR3VhcmRhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ikerc/OneDrive/Escritorio/Retoweb/Reto-TC2005B/Views/Grupo/Listar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3J1cG9cTGlzdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ikerc/OneDrive/Escritorio/Retoweb/Reto-TC2005B/Views/Grupo/Ver.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3J1cG9cVmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ikerc/OneDrive/Escritorio/Retoweb/Reto-TC2005B/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ikerc/OneDrive/Escritorio/Retoweb/Reto-TC2005B/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ikerc/OneDrive/Escritorio/Retoweb/Reto-TC2005B/Views/Profesor/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmVzb3JcRWRpdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ikerc/OneDrive/Escritorio/Retoweb/Reto-TC2005B/Views/Profesor/Eliminar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmVzb3JcRWxpbWluYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ikerc/OneDrive/Escritorio/Retoweb/Reto-TC2005B/Views/Profesor/Guardar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmVzb3JcR3VhcmRhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ikerc/OneDrive/Escritorio/Retoweb/Reto-TC2005B/Views/Profesor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmVzb3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ikerc/OneDrive/Escritorio/Retoweb/Reto-TC2005B/Views/Profesor/Listar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmVzb3JcTGlzdGFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ikerc/OneDrive/Escritorio/Retoweb/Reto-TC2005B/Views/Shared/Error.cshtml]
