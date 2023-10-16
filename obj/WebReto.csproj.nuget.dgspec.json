@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ikerc\\OneDrive\\Escritorio\\Retoweb\\Reto-TC2005B\\WebReto.csproj": {}
+    "C:\\Users\\MOAR\\Documents\\Materias TEC\\5 semestre\\bloque 5\\Programación\\Web\\Proyecto\\Reto-TC2005B\\WebReto.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ikerc\\OneDrive\\Escritorio\\Retoweb\\Reto-TC2005B\\WebReto.csproj": {
+    "C:\\Users\\MOAR\\Documents\\Materias TEC\\5 semestre\\bloque 5\\Programación\\Web\\Proyecto\\Reto-TC2005B\\WebReto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ikerc\\OneDrive\\Escritorio\\Retoweb\\Reto-TC2005B\\WebReto.csproj",
+        "projectUniqueName": "C:\\Users\\MOAR\\Documents\\Materias TEC\\5 semestre\\bloque 5\\Programación\\Web\\Proyecto\\Reto-TC2005B\\WebReto.csproj",
         "projectName": "WebReto",
-        "projectPath": "C:\\Users\\ikerc\\OneDrive\\Escritorio\\Retoweb\\Reto-TC2005B\\WebReto.csproj",
-        "packagesPath": "C:\\Users\\ikerc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ikerc\\OneDrive\\Escritorio\\Retoweb\\Reto-TC2005B\\obj\\",
+        "projectPath": "C:\\Users\\MOAR\\Documents\\Materias TEC\\5 semestre\\bloque 5\\Programación\\Web\\Proyecto\\Reto-TC2005B\\WebReto.csproj",
+        "packagesPath": "C:\\Users\\MOAR\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MOAR\\Documents\\Materias TEC\\5 semestre\\bloque 5\\Programación\\Web\\Proyecto\\Reto-TC2005B\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ikerc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\MOAR\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
