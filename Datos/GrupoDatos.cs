@@ -1,13 +1,13 @@
 ﻿using System;
 using Npgsql;
 using System.Data;
-using WebLogin.Models;
+using WebReto.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Win32;
 
-namespace WebLogin.Datos
+namespace WebReto.Datos
 {
     public class GrupoDatos
     {
@@ -228,6 +228,50 @@ namespace WebLogin.Datos
             }
 
             return oListaAlumnos;
+        }
+
+
+        public List<ProfesorModel> ObtenerProfesoresPorGrupo(string nombre_grupo)
+        {
+            var oListaProfesores = new List<ProfesorModel>();
+            var con = new Conexion();
+            NpgsqlConnection conn = con.AbrirConexion();
+
+            //NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM alumnos WHERE id IN (SELECT id_alumno FROM grupos_alumnos WHERE grupo = '" + nombre_grupo + "');", con.AbrirConexion());
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM profesores ORDER BY id;", con.AbrirConexion());
+            cmd.CommandType = CommandType.Text;
+
+            try
+            {
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oListaProfesores.Add(new ProfesorModel()
+                        {
+                            IdProfesor = Convert.ToInt32(dr["id"]),
+                            Nombre = dr["nombre"].ToString(),
+                            ApPaterno = dr["apellido_pat"].ToString(),
+                            ApMaterno = dr["apellido_mat"].ToString(),
+                            Edad = Convert.ToInt32(dr["edad"]),
+                            Telefono = Convert.ToString(dr["telefono"]),
+                            Email = Convert.ToString(dr["email"])
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción (por ejemplo, registrarla o lanzarla de nuevo)
+                Console.WriteLine("Error al consultar la base de datos: " + ex.Message);
+                throw ex;
+            }
+            finally
+            {
+                con.CerrarConexion(); // Asegurar que la conexión se cierre
+            }
+
+            return oListaProfesores;
         }
 
 

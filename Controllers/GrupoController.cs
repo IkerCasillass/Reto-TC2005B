@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebLogin.Datos;
-using WebLogin.Models;
+using WebReto.Datos;
+using WebReto.Models;
+using WebReto.ViewModels;
 
-namespace WebLogin.Controllers
+namespace WebReto.Controllers
 {
     public class GrupoController : Controller
     {
@@ -107,12 +108,17 @@ namespace WebLogin.Controllers
         public IActionResult Ver(string Nombre)
         {
             // Recupera la lista de alumnos del grupo seleccionado, puedes utilizar tu lógica para obtener estos datos.
-            List<AlumnoModel> alumnos = cGrupos.ObtenerAlumnosPorGrupo(Nombre);
+            var GrupoVM = new GrupoViewModel()
+            {
+                Alumnos = cGrupos.ObtenerAlumnosPorGrupo(Nombre),
+                Profesores = cGrupos.ObtenerProfesoresPorGrupo(Nombre)
+
+            };
 
             ViewData["Nombre"] = Nombre;
 
-            // Puedes pasar los alumnos a una vista para mostrarlos.
-            return View(alumnos);
+
+            return View(GrupoVM);
         }
     }
 }

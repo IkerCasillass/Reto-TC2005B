@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebLogin.Datos;
-using WebLogin.Models;
+using WebReto.Datos;
+using WebReto.Models;
 
-namespace WebLogin.Controllers
+namespace WebReto.Controllers
 {
     public class AlumnoController : Controller
     {
@@ -49,9 +49,6 @@ namespace WebLogin.Controllers
                 return View();
             }
 
-            //cAlumnos.Guardar(alumno); // Reemplaza con tu lógica para guardar un alumno
-
-            //return RedirectToAction("Listar", "Alumno");
         }
 
         public IActionResult Editar(int idAlumno)
@@ -68,7 +65,7 @@ namespace WebLogin.Controllers
                 return View(alumno);
             }
 
-            cAlumnos.Actualizar(alumno); // Reemplaza con tu lógica para actualizar un alumno
+            cAlumnos.Actualizar(alumno); 
 
             return RedirectToAction("Listar");
         }

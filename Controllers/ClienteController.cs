@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebLogin.Datos;
-using WebLogin.Models;
+using WebReto.Datos;
+using WebReto.Models;
 
-namespace WebLogin.Controllers
+namespace WebReto.Controllers
 {
     public class ClienteController : Controller
     {

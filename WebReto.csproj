@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="WebLogin.csproj" />
-    <None Include="WebLogin.csproj.user" />
-    <None Include="WebLogin.sln" />
+    <None Include="WebReto.csproj" />
+    <None Include="WebReto.csproj.user" />
+    <None Include="WebReto.sln" />
   </ItemGroup>
 
   <ItemGroup>

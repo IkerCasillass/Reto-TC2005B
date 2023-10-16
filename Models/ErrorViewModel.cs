@@ -1,6 +1,6 @@
 using System;
 
-namespace WebLogin.Models
+namespace WebReto.Models
 {
     public class ErrorViewModel
     {
