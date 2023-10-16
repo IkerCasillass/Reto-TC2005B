@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using WebLogin.Models;
+using WebReto.Models;
 
-namespace WebLogin.Controllers
+namespace WebReto.Controllers
 {
     public class HomeController : Controller
     {

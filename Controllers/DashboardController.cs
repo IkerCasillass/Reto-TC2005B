@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebLogin.Controllers
+namespace WebReto.Controllers
 {
     public class DashboardController : Controller
     {

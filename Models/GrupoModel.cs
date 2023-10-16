@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebLogin.Models
+namespace WebReto.Models
 {
     public class GrupoModel
     {
@@ -15,6 +15,8 @@ namespace WebLogin.Models
         public int NumEstudiantes { get; set; }
 
         public List<AlumnoModel> Estudiantes { get; set; }
+
+        public List<ProfesorModel> Profesores { get; set; }
 
     }
 }

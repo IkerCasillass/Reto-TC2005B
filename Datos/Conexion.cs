@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Npgsql;
 
 
-namespace WebLogin.Datos
+namespace WebReto.Datos
 {
     public class Conexion
     {

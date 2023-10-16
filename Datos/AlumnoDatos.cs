@@ -1,14 +1,14 @@
 ﻿using System;
 using Npgsql;
 using System.Data;
-using WebLogin.Models;
+using WebReto.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Win32;
 using System.Text.RegularExpressions;
 
-namespace WebLogin.Datos
+namespace WebReto.Datos
 {
     public class AlumnoDatos
     {
