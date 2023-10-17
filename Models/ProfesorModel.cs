@@ -23,5 +23,7 @@ namespace WebReto.Models
         public string Email { get; set; }
 
         public List<AsignaturaModel> Asignaturas { get; set; } // Lista de asignaturas que imparte
+
+        public string AsignaturaActual { get; set; }
     }
 }

@@ -238,7 +238,7 @@ namespace WebReto.Datos
             NpgsqlConnection conn = con.AbrirConexion();
 
             //NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM alumnos WHERE id IN (SELECT id_alumno FROM grupos_alumnos WHERE grupo = '" + nombre_grupo + "');", con.AbrirConexion());
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM profesores ORDER BY id;", con.AbrirConexion());
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM consultar_profesores_por_grupo('" + nombre_grupo +"');", con.AbrirConexion());
             cmd.CommandType = CommandType.Text;
 
             try
@@ -249,13 +249,16 @@ namespace WebReto.Datos
                     {
                         oListaProfesores.Add(new ProfesorModel()
                         {
-                            IdProfesor = Convert.ToInt32(dr["id"]),
+                            IdProfesor = Convert.ToInt32(dr["id_profesor"]),
                             Nombre = dr["nombre"].ToString(),
                             ApPaterno = dr["apellido_pat"].ToString(),
                             ApMaterno = dr["apellido_mat"].ToString(),
                             Edad = Convert.ToInt32(dr["edad"]),
                             Telefono = Convert.ToString(dr["telefono"]),
-                            Email = Convert.ToString(dr["email"])
+                            Email = Convert.ToString(dr["email"]),
+                            AsignaturaActual = dr["nombre_asignatura"].ToString()
+
+
                         });
                     }
                 }

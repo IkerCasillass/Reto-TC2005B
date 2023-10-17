@@ -42,7 +42,7 @@
 </div>
 
 <div class="container">
-    <a asp-action="Guardar" asp-controller="Alumno" class="btn btn-sm btn-primary"><i class="bi bi-file-earmark-plus"> Crear Nuevo Alumno  </i></a>
+    <a asp-action="Guardar" asp-controller="Profesor" class="btn btn-sm btn-primary"><i class="bi bi-file-earmark-plus"> Crear Nuevo Profesor  </i></a>
     <div class="table">
         <table class="bg-secondor">
             <thead>
@@ -52,8 +52,9 @@
                     <th>Apellido Paterno</th>
                     <th>Apellido Materno</th>
                     <th>Edad</th>
-                    <th>Grado</th>
-                    <th>Grupo</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Asignatura Impartida</th>
                     <th colspan="2" style="text-align: center;">Acciones</th>
                 </tr>
             </thead>
@@ -68,6 +69,7 @@
                         <td> @item.Edad </td>
                         <td> @item.Telefono </td>
                         <td> @item.Email </td>
+                        <td> @item.AsignaturaActual </td>
                         <td><a asp-action="Editar" asp-controller="Profesor" class="btn btn-sm btn-warning " asp-route-idProfesor="@item.IdProfesor"> <i class="bi bi-pencil-square"></i> Actualizar</a></td>
                         <td><a asp-action="Eliminar" asp-controller="Profesor" class="btn btn-sm btn-danger" asp-route-idProfesor="@item.IdProfesor"> <i class="bi bi-cloud-minus"> </i> Eliminar </a></td>
                     </tr>
