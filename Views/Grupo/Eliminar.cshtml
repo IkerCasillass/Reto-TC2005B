@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h4>Eliminar Grupo</h4>
+<h4 class="maintitle">Eliminar Grupo</h4>
 <div class="card-body">
     @if (!string.IsNullOrEmpty(TempData["Mensaje"] as string))
     {
@@ -14,7 +14,7 @@
     }
     <form asp-action="Eliminar" asp-controller="Grupo" method="post">
         <div class="form-group">
-            <label for="txtNombre">Nombre:</label>
+            <label class="white" for="txtNombre">Nombre:</label>
             <input asp-for="Nombre" type="text" class="form-control" id="txtNombre">
         </div>
         <input asp-for="NumEstudiantes" type="hidden" />

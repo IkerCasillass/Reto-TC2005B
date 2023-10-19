@@ -33,10 +33,10 @@ namespace WebReto.Controllers
 
         public IActionResult Guardar(GrupoModel Grupo)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(Grupo);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return View(Grupo);
+            //}
 
 
             var resp = cGrupos.Guardar(Grupo);

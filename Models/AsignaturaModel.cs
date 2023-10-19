@@ -13,6 +13,6 @@ namespace WebReto.Models
 
         public string Nombre { get; set; }
 
-        public List<GrupoModel> Grupos { get; set; }
+        public string Grupo { get; set; }
     }
 }

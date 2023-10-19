@@ -4,11 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h4>Eliminar Profesor</h4>
+<h4 class="maintitle">Eliminar Profesor</h4>
 <div class="card-body">
     <form asp-action="Eliminar" asp-controller="Profesor" method="post">
         <div class="form-group">
-            <label for="txtIdProfesor">ID:</label>
+            <label class="white" for="txtIdProfesor">ID:</label>
             <input asp-for="IdProfesor" type="text" class="form-control" id="txtIdProfesor">
         </div>
         <div class="alert alert-danger" role="alert">¿Desea dar de baja al Profesor?: @Html.DisplayTextFor(m => m.IdProfesor)</div>

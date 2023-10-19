@@ -82,6 +82,101 @@ namespace WebReto.Datos
             return oListaAlumnos;
         }
 
+        public List<AlumnoModel> ConsultarPaginado(int elementosPorPagina, int offset)
+        {
+            var oListaAlumnos = new List<AlumnoModel>();
+            var con = new Conexion();
+            NpgsqlConnection conn = con.AbrirConexion();
+
+            string sql = "SELECT * FROM alumnos ORDER BY id OFFSET @offset ROWS FETCH NEXT @pageSize ROWS ONLY;";
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+            cmd.CommandType = CommandType.Text;
+
+            // Agregar parámetros
+            cmd.Parameters.AddWithValue("@offset", offset);
+            cmd.Parameters.AddWithValue("@pageSize", elementosPorPagina);
+
+            try
+            {
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oListaAlumnos.Add(new AlumnoModel()
+                        {
+                            IdAlumno = Convert.ToInt32(dr["id"]),
+                            Nombre = dr["nombre"].ToString(),
+                            ApPaterno = dr["apellido_pat"].ToString(),
+                            ApMaterno = dr["apellido_mat"].ToString(),
+                            Edad = Convert.ToInt32(dr["edad"]),
+                            Grado = Convert.ToInt32(dr["grado"]),
+                            Grupo = dr["grupo"].ToString()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción (por ejemplo, registrarla o lanzarla de nuevo)
+                Console.WriteLine("Error al consultar la base de datos: " + ex.Message);
+                throw ex;
+            }
+            finally
+            {
+                con.CerrarConexion(); // Asegurar que la conexión se cierre
+            }
+
+            return oListaAlumnos;
+        }
+
+
+        public List<AlumnoModel> ConsultarPaginadoRanking(int elementosPorPagina, int offset)
+        {
+            var oListaAlumnos = new List<AlumnoModel>();
+            var con = new Conexion();
+            NpgsqlConnection conn = con.AbrirConexion();
+
+            string sql = "SELECT * FROM alumnos ORDER BY puntaje DESC OFFSET @offset ROWS FETCH NEXT @pageSize ROWS ONLY;";
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+            cmd.CommandType = CommandType.Text;
+
+            // Agregar parámetros
+            cmd.Parameters.AddWithValue("@offset", offset);
+            cmd.Parameters.AddWithValue("@pageSize", elementosPorPagina);
+
+            try
+            {
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oListaAlumnos.Add(new AlumnoModel()
+                        {
+                            IdAlumno = Convert.ToInt32(dr["id"]),
+                            Nombre = dr["nombre"].ToString(),
+                            ApPaterno = dr["apellido_pat"].ToString(),
+                            ApMaterno = dr["apellido_mat"].ToString(),
+                            Grupo = dr["grupo"].ToString(),
+                            Puntaje = Convert.ToInt32(dr["puntaje"])
+
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción (por ejemplo, registrarla o lanzarla de nuevo)
+                Console.WriteLine("Error al consultar la base de datos: " + ex.Message);
+                throw ex;
+            }
+            finally
+            {
+                con.CerrarConexion(); // Asegurar que la conexión se cierre
+            }
+
+            return oListaAlumnos;
+        }
+
 
         public bool Guardar(AlumnoModel oAlumno)
         {

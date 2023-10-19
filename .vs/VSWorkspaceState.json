@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Datos"
+    "\\Datos",
+    "\\Views",
+    "\\Views\\Alumno",
+    "\\Views\\Shared"
   ],
-  "SelectedNode": "\\Datos\\ProfesorDatos.cs",
+  "SelectedNode": "\\Views\\Alumno\\Listar.cshtml",
   "PreviewInSolutionExplorer": false
 }

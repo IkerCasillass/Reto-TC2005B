@@ -1,0 +1,42 @@
+﻿@model ProfesorModel
+@{
+    ViewData["Title"] = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Editar Profesor</h1>
+<div class="card">
+    <form method="post" asp-action="NuevaAsignatura" asp-controller="Profesor">
+        <div class="form-group">
+            <label for="txtIdProfesor">IdProfesor:</label>
+            <input asp-for="IdProfesor" type="text" id="txtIdProfesor" class="form-control" readonly />
+        </div>
+        <div class="form-group">
+            <label for="txtNombre">Nombre:</label>
+            <input asp-for="Nombre" type="text" id="txtNombre" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="txtApPaterno">Apellido Paterno:</label>
+            <input asp-for="ApPaterno" type="text" id="txtApPaterno" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="txtApMaterno">Apellido Materno:</label>
+            <input asp-for="ApMaterno" type="text" id="txtApMaterno" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="txtEdad">Edad:</label>
+            <input asp-for="Edad" type="text" id="txtEdad" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="txtTelefono">Telefono:</label>
+            <input asp-for="Telefono" type="text" id="txtTelefono" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="txtEmail">Email:</label>
+            <input asp-for="Email" type="text" id="txtEmail" class="form-control" />
+            <button type="submit" class="btn btn-primary">Editar</button>
+            <a asp-action="Listar" class="btn btn-primary">Volver</a>
+        </div>
+    </form>
+</div>

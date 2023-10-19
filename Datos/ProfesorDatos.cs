@@ -81,6 +81,56 @@ namespace WebReto.Datos
             return oListaProfesores;
         }
 
+        public List<AsignaturaModel> ConsultarAsignaturas(int idProfesor)
+        {
+            var oListaAsignaturas = new List<AsignaturaModel>();
+            var con = new Conexion();
+            NpgsqlConnection conn = con.AbrirConexion();
+
+            string sql = "SELECT * FROM consultar_asignaturas_por_profesor('"+ idProfesor + "');";
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+            cmd.CommandType = CommandType.Text;
+
+            try
+            {
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oListaAsignaturas.Add(new AsignaturaModel()
+                        {
+                            Nombre = dr["nombre_asignatura"].ToString(),
+                            Grupo = dr["nombre_grupo"].ToString()
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción (por ejemplo, registrarla o lanzarla de nuevo)
+                Console.WriteLine("Error al consultar la base de datos: " + ex.Message);
+                throw ex;
+            }
+            finally
+            {
+                con.CerrarConexion(); // Asegurar que la conexión se cierre
+            }
+
+            return oListaAsignaturas;
+        }
+
+        public bool GuardarAsignatura(ProfesorModel oProfesor)
+        {
+            bool flag;
+            var con = new Conexion();
+            string sql = "CALL sp_Profesores_insert (" /*+ oProfesor.IdProfesor*/ + "'" + oProfesor.Nombre + "','" + oProfesor.ApPaterno + "','" + oProfesor.ApMaterno + "'," + oProfesor.Edad + ",'" + oProfesor.Telefono + "','" + oProfesor.Email + "')";
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, con.AbrirConexion());
+            cmd.ExecuteNonQuery();
+            flag = true;
+            con.CerrarConexion();
+            return flag;
+        }
+
 
         public bool Guardar(ProfesorModel oProfesor)
         {
@@ -109,10 +159,26 @@ namespace WebReto.Datos
         public bool Eliminar(int IdProfesor)
         {
             bool flag;
+            //var con = new Conexion();
+            //string sql = "CALL sp_Profesores_delete (" + IdProfesor + ")";
+            //NpgsqlCommand cmd = new NpgsqlCommand(sql, con.AbrirConexion());
+            //cmd.ExecuteNonQuery();
+            //flag = true;
+            //con.CerrarConexion();
+            //return flag;
+
             var con = new Conexion();
-            string sql = "CALL sp_Profesores_delete (" + IdProfesor + ")";
-            NpgsqlCommand cmd = new NpgsqlCommand(sql, con.AbrirConexion());
-            cmd.ExecuteNonQuery();
+
+            // Llama a la función para eliminar referencias
+            string sqlFunction = "SELECT fn_EliminarReferenciasProfesor(" + IdProfesor + ")";
+            NpgsqlCommand cmdFunction = new NpgsqlCommand(sqlFunction, con.AbrirConexion());
+            cmdFunction.ExecuteNonQuery();
+
+            // Luego llama al procedimiento almacenado sp_Grupos_delete
+            string sqlProcedure = "CALL sp_Profesores_delete (" + IdProfesor + ")";
+            NpgsqlCommand cmdProcedure = new NpgsqlCommand(sqlProcedure, con.AbrirConexion());
+            cmdProcedure.ExecuteNonQuery();
+
             flag = true;
             con.CerrarConexion();
             return flag;
