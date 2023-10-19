@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebReto.Datos;
 using WebReto.Models;
+using X.PagedList;
 
 namespace WebReto.Controllers
 {
@@ -17,10 +18,30 @@ namespace WebReto.Controllers
             return View();
         }
 
-        public IActionResult Listar()
+        public IActionResult Listar(int? pagina)
         {
-            var listaAlumnos = cAlumnos.Consultar(); // Reemplaza con tu lógica para obtener todos los alumnos
-            return View(listaAlumnos);
+            int elementosPorPagina = 20;
+            int numeroPagina = (pagina ?? 1);
+            int offset = (numeroPagina - 1) * elementosPorPagina;
+
+            var listaAlumnos = cAlumnos.ConsultarPaginado(elementosPorPagina, offset);
+
+            IPagedList<AlumnoModel> alumnosPaginados = listaAlumnos.ToPagedList(numeroPagina, elementosPorPagina);
+
+            return View(alumnosPaginados);
+        }
+
+        public IActionResult ListarRanking(int? pagina)
+        {
+            int elementosPorPagina = 20;
+            int numeroPagina = (pagina ?? 1);
+            int offset = (numeroPagina - 1) * elementosPorPagina;
+
+            var listaAlumnos = cAlumnos.ConsultarPaginadoRanking(elementosPorPagina, offset);
+
+            IPagedList<AlumnoModel> alumnosPaginados = listaAlumnos.ToPagedList(numeroPagina, elementosPorPagina);
+
+            return View(alumnosPaginados);
         }
 
         public IActionResult Guardar()

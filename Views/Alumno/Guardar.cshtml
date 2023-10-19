@@ -5,7 +5,7 @@
 }
 
 
-<h1>Alta de Alumno</h1>
+<h1 class="maintitle">Alta de Alumno</h1>
 <div class="card">
     <form method="post" asp-action="Guardar" asp-controller="Alumno">
         <div class="form-group">
@@ -33,7 +33,7 @@
         <div class="form-group">
             <label for="txtGrupo">Grupo:</label>
             <input asp-for="Grupo" type="text" id="txtGrupo" class="form-control" />
-            <button type="submit" class="btn btn-primary">Editar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
             <a asp-action="Listar" class="btn btn-primary">Volver</a>
         </div>
     </form>

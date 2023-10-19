@@ -107,12 +107,22 @@ namespace WebReto.Datos
             bool flag = false;
             GrupoModel oGrupo = Obtener(nombre_grupo);
 
+            // Primero eliminar referencias en profesor_asignatura
+
             if(oGrupo.NumEstudiantes == 0)
             {
                 var con = new Conexion();
-                string sql = "CALL sp_Grupos_delete ('" + nombre_grupo + "')";
-                NpgsqlCommand cmd = new NpgsqlCommand(sql, con.AbrirConexion());
-                cmd.ExecuteNonQuery();
+
+                // Llama a la función para eliminar referencias
+                string sqlFunction = "SELECT fn_EliminarReferenciasGrupo('" + nombre_grupo + "')";
+                NpgsqlCommand cmdFunction = new NpgsqlCommand(sqlFunction, con.AbrirConexion());
+                cmdFunction.ExecuteNonQuery();
+
+                // Luego llama al procedimiento almacenado sp_Grupos_delete
+                string sqlProcedure = "CALL sp_Grupos_delete ('" + nombre_grupo + "')";
+                NpgsqlCommand cmdProcedure = new NpgsqlCommand(sqlProcedure, con.AbrirConexion());
+                cmdProcedure.ExecuteNonQuery();
+
                 flag = true;
                 con.CerrarConexion();
             }

@@ -1,0 +1,13 @@
+C:\Users\ikerc\OneDrive\Escritorio\Retoweb\Reto-TC2005B\obj\Release\net6.0\PubTmp\Out\WebReto.exe
+C:\Users\ikerc\OneDrive\Escritorio\Retoweb\Reto-TC2005B\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+C:\Users\ikerc\OneDrive\Escritorio\Retoweb\Reto-TC2005B\obj\Release\net6.0\PubTmp\Out\appsettings.json
+C:\Users\ikerc\OneDrive\Escritorio\Retoweb\Reto-TC2005B\obj\Release\net6.0\PubTmp\Out\WebReto.dll
+C:\Users\ikerc\OneDrive\Escritorio\Retoweb\Reto-TC2005B\obj\Release\net6.0\PubTmp\Out\WebReto.deps.json
+C:\Users\ikerc\OneDrive\Escritorio\Retoweb\Reto-TC2005B\obj\Release\net6.0\PubTmp\Out\WebReto.runtimeconfig.json
+C:\Users\ikerc\OneDrive\Escritorio\Retoweb\Reto-TC2005B\obj\Release\net6.0\PubTmp\Out\WebReto.pdb
+C:\Users\ikerc\OneDrive\Escritorio\Retoweb\Reto-TC2005B\obj\Release\net6.0\PubTmp\Out\JetBrains.Annotations.dll
+C:\Users\ikerc\OneDrive\Escritorio\Retoweb\Reto-TC2005B\obj\Release\net6.0\PubTmp\Out\Npgsql.dll
+C:\Users\ikerc\OneDrive\Escritorio\Retoweb\Reto-TC2005B\obj\Release\net6.0\PubTmp\Out\PagedList.dll
+C:\Users\ikerc\OneDrive\Escritorio\Retoweb\Reto-TC2005B\obj\Release\net6.0\PubTmp\Out\PagedList.Mvc.dll
+C:\Users\ikerc\OneDrive\Escritorio\Retoweb\Reto-TC2005B\obj\Release\net6.0\PubTmp\Out\X.PagedList.dll
+C:\Users\ikerc\OneDrive\Escritorio\Retoweb\Reto-TC2005B\obj\Release\net6.0\PubTmp\Out\X.PagedList.Mvc.Core.dll

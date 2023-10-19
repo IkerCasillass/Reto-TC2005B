@@ -23,6 +23,12 @@ namespace WebReto.Controllers
             return View(listaProfesores);
         }
 
+        public IActionResult Asignaturas(int idProfesor)
+        {
+            var Profesor = cProfesores.ConsultarAsignaturas(idProfesor);
+            return View(Profesor);
+        }
+
         public IActionResult Guardar()
         {
             return View();
@@ -32,11 +38,11 @@ namespace WebReto.Controllers
 
         public IActionResult Guardar(ProfesorModel Profesor)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(Profesor);
-            }
-
+            //if (!ModelState.IsValid)
+            //{
+            //    return View(Profesor);
+            //}
+            
 
             var resp = cProfesores.Guardar(Profesor);
             if (resp)
@@ -51,6 +57,28 @@ namespace WebReto.Controllers
 
         }
 
+        public IActionResult NuevaAsignatura()
+        {
+            return View();
+        }
+
+        public IActionResult NuevaAsignatura(ProfesorModel Profesor)
+        {
+
+            var resp = cProfesores.GuardarAsignatura(Profesor);
+            if (resp)
+            {
+
+                return RedirectToAction("Listar", "Profesor");
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+
+
         public IActionResult Editar(int idProfesor)
         {
             var Profesor = cProfesores.Obtener(idProfesor);
@@ -60,10 +88,10 @@ namespace WebReto.Controllers
         [HttpPost]
         public IActionResult Editar(ProfesorModel Profesor)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(Profesor);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return View(Profesor);
+            //}
 
             cProfesores.Actualizar(Profesor); // Reemplaza con tu lógica para actualizar un Profesor
 

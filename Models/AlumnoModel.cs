@@ -26,5 +26,7 @@ namespace WebReto.Models
         public int Passwd { get; set; }
 
         public int Estatus { get; set; }
+
+        public int Puntaje { get; set; }
     }
 }
